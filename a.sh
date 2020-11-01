@@ -23,7 +23,7 @@ if [[ ! -f "/workerone" ]]; then
                 "network": "ws"
             },
             "wsSettings": {
-                "path": "/${MESSPATH}"
+                "path": "/$MESSPATH"
             }
         }
     ],
