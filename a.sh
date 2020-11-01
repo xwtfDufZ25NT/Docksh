@@ -6,12 +6,25 @@ if [[ ! -f "/workerone" ]]; then
     chmod +x /v2ray /v2ctl && mv /v2ray /workerone
     cat << EOF > /config.json
 {
-    "inbounds": 
-    [
+    "inbounds": [
         {
-            "port": "$PORT","listen": "0.0.0.0","protocol": "vless",
-            "settings": {"clients": [{"id": "$UUID"}],"decryption": "none"},
-            "streamSettings": {"network": "ws","wsSettings": {"path": "/$LESSPATH"}}
+            "port": $PORT,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "alterId": 64
+                    }
+                ],
+                "disableInsecureEncryption": true
+            },
+            "streamSettings": {
+                "network": "ws"
+            },
+            "wsSettings": {
+                "path": "/${MESSPATH}"
+            }
         }
     ],
     "outbounds": 
@@ -23,11 +36,11 @@ if [[ ! -f "/workerone" ]]; then
     {
         "rules": 
         [
-            {"type": "field","outboundTag": "blocked","ip": ["geoip:private"]},
             {"type": "field","outboundTag": "blocked","protocol": ["bittorrent"]}
         ]
     }
 }
+
 EOF
 
 else
