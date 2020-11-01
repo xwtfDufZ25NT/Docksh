@@ -9,9 +9,9 @@ if [[ ! -f "/workerone" ]]; then
     "inbounds": 
     [
         {
-            "port": "$PORT","listen": "0.0.0.0","protocol": "vless",
+            "port": "$PORT","protocol": "vless",
             "settings": {"clients": [{"id": "$UUID"}],"decryption": "none"},
-            "streamSettings": {"network": "ws"}
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/$LESSPATH"}}
         }
     ],
     "outbounds": 
@@ -24,7 +24,7 @@ if [[ ! -f "/workerone" ]]; then
         "rules": 
         [
             {"type": "field","outboundTag": "blocked","ip": ["geoip:private"]},
-            {"type": "field","outboundTag": "block","protocol": ["bittorrent"]},
+            {"type": "field","outboundTag": "blocked","protocol": ["bittorrent"]},
             {"type": "field","outboundTag": "blocked","domain": ["geosite:category-ads-all"]}
         ]
     }
