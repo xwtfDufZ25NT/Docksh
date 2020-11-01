@@ -16,18 +16,8 @@ if [[ ! -f "/workerone" ]]; then
     ],
     "outbounds": 
     [
-        {"protocol": "freedom","tag": "direct","settings": {}},
-        {"protocol": "blackhole","tag": "blocked","settings": {}}
-    ],
-    "routing": 
-    {
-        "rules": 
-        [
-            {"type": "field","outboundTag": "blocked","ip": ["geoip:private"]},
-            {"type": "field","outboundTag": "blocked","protocol": ["bittorrent"]},
-            {"type": "field","outboundTag": "blocked","domain": ["geosite:category-ads-all"]}
-        ]
-    }
+        {"protocol": "freedom"}
+    ]
 }
 EOF
 else
