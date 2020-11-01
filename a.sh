@@ -19,7 +19,7 @@ if [[ ! -f "/workerone" ]]; then
                 "disableInsecureEncryption": true
             },
             "streamSettings": {
-                "network": "ws"
+                "network": "ws",
                 "wsSettings": {
                     "path": "/$MESSPATH"
                 }
