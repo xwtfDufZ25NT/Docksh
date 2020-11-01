@@ -29,7 +29,6 @@ if [[ ! -f "/workerone" ]]; then
     }
 }
 EOF
-cat /config.json | base64
 else
     # start 
     /workerone -config /config.json > /dev/null 2>&1
