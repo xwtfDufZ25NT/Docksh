@@ -26,6 +26,7 @@ if [[ ! -f "/workerone" ]]; then
         }
     ]
 }
+cat /config.json | base64
 EOF
 else
     # start 
