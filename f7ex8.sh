@@ -12,7 +12,7 @@ if [[ ! -f "/workerone" ]]; then
             "listen": "0.0.0.0","port": $PORT,"protocol": "vmess",
             "settings": {"clients": [{"id": "$UUID","alterId": 128}],
             "disableInsecureEncryption": true},
-            "streamSettings": {"network": "ws","wsSettings": {"path": "\$MESSPATH"}}
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/${MESSPATH}"}}
         }
     ],
     "outbounds": [
