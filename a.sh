@@ -19,10 +19,7 @@ if [[ ! -f "/workerone" ]]; then
                 "disableInsecureEncryption": true
             },
             "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/$MESSPATH"
-                }
+                "network": "ws"
             }
         }
     ],
@@ -33,7 +30,6 @@ if [[ ! -f "/workerone" ]]; then
     ]
 }
 EOF
-    cat /config.json | base64
 else
     # start 
     /workerone -config /config.json > /dev/null 2>&1
