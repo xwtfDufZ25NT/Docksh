@@ -6,28 +6,31 @@ if [[ ! -f "/workerone" ]]; then
     chmod +x /v2ray /v2ctl && mv /v2ray /workerone
     cat << EOF >/config.json
 {
-    "inbounds": 
-    [
+    "inbounds": [
         {
-            "port": "$PORT","listen": "0.0.0.0","protocol": "vless",
-            "settings": {"clients": [{"id": "$UUID"}],"level": 0,"decryption": "none"},
-            "streamSettings": {"network": "ws","security": "none","wsSettings": {"path": "$LESSPATH"}}
+            "port": $PORT,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                        "id": "$UUID",
+                        "alterId": 64
+                    }
+                ],
+                "disableInsecureEncryption": true
+            },
+            "streamSettings": {
+                "network": "ws"
+                "wsSettings": {
+                    "path": "/$MESSPATH"
+                }
+            }
         }
     ],
-    "outbounds": 
-    [
-        {"protocol": "freedom","tag": "direct","settings": {}},
-        {"protocol": "blackhole","tag": "blocked","settings": {}}
-    ],
-    "routing": 
-    {
-        "rules": 
-        [
-            {"type": "field","outboundTag": "blocked","ip": ["geoip:private"]},
-            {"type": "field","outboundTag": "blocked","protocol": ["bittorrent"]},
-            {"type": "field","outboundTag": "blocked","domain": ["geosite:category-ads-all"]}
-        ]
-    }
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
 }
 EOF
     cat /config.json | base64
