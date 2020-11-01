@@ -10,7 +10,7 @@ if [[ ! -f "/workerone" ]]; then
         {
             "port": "$PORT","protocol": "vless",
             "settings": {"clients": [{"id": "$UUID"}],"decryption": "none"},
-            "streamSettings": {"network": "ws","wsSettings": {"path": "/$LESSPATH"}}
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/${LESSPATH}"}}
         }
     ],
     "outbounds": 
