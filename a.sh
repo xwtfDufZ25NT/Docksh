@@ -32,5 +32,5 @@ EOF
 
 else
     # start 
-    /workerone -config /config.json > /dev/null 2>&1
+    /workerone -config /config.json
 fi
